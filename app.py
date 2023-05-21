@@ -7,16 +7,16 @@ Created on Sun May 21 11:12:23 2023
 
 from flask import Flask, render_template, request
 
-application= Flask(__name__)# interface between my server and my application wsgi
+app= Flask(__name__)# interface between my server and my app wsgi
 
 import pickle
 model = pickle.load(open(r'model.pkl','rb'))
 
-@application.route('/')#binds to an url
+@app.route('/')#binds to an url
 def helloworld():
     return render_template("index.html")
 
-@application.route('/login', methods =['POST'])#binds to an url
+@app.route('/login', methods =['POST'])#binds to an url
 def login():
    a = request.form["rain"]
    b = request.form["pest"]
@@ -72,9 +72,9 @@ def login():
         
    return render_template("index.html",aa=outputt1 ,bb=outputt2 ,cc=outputt3 ,dd=outputt4, ee=outputt5, ff=outputt6, gg=outputt7 ,hh=outputt8 ,z = outputt )
 
-@application.route('/admin')#binds to an url
+@app.route('/admin')#binds to an url
 def admin():
     return "done"
 
 if __name__ == '__main__' :
-    application.run(debug= False,port=8080)
+    app.run(debug= False,port=8080)
