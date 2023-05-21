@@ -5,5 +5,4 @@ gunicorn
 seaborn
 matplotlib
 sklearn
-pickle
 scikit-learn
